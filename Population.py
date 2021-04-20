@@ -45,5 +45,7 @@ class Population:
 
     def get_final_fitness(self):
         fitness = [jumper.get_distance_to_goal() for jumper in self.jumpers]
+        fitness = [(1/(fit/100+0.1) + 1) ** 2 for fit in fitness]
         fitness = np.array(fitness)
-        return fitness / fitness.sum()
+        fitness = fitness / fitness.sum()
+        return fitness
