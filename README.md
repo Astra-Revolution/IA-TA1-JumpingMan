@@ -2,6 +2,6 @@
 ## Install package for Windows
 py -m venv venv
 
-venv/Scripts/activate.bat
+venv\Scripts\activate.bat
 
-pip install requirements.txt
+pip install -r requirements.txt
