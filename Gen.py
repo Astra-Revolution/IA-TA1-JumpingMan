@@ -5,7 +5,7 @@ from Position import Position
 
 
 class Gen:
-    RATE = 0.05
+    RATE = 0.005
     VX_LIMIT = 20
     VY_LIMIT = 20
 
@@ -17,10 +17,7 @@ class Gen:
 
     def mutate(self, screen):
         index = random.randint(0, 2)
-        if index == 0:
-            mutation = np.random.choice(screen[0], screen[1])
-            self.x = mutation
-        elif index == 1:
+        if index == 1:
             self.velocity.x = random.randint(-Gen.VX_LIMIT, Gen.VX_LIMIT)
         else:
             self.velocity.y = random.randint(0, Gen.VY_LIMIT)

@@ -39,13 +39,14 @@ class Population:
 
         del self.jumpers[:]
         self.jumpers = new_population
+        self.mutate()
 
     def all_alive(self):
         return all(not jumper.alive for jumper in self.jumpers)
 
     def get_final_fitness(self):
         fitness = [jumper.get_distance_to_goal() for jumper in self.jumpers]
-        fitness = [(1/(fit/100+0.1) + 1) ** 2 for fit in fitness]
+        fitness = [(1/(fit/1000+0.1) + 1) ** 2 for fit in fitness]
         fitness = np.array(fitness)
         fitness = fitness / fitness.sum()
         return fitness

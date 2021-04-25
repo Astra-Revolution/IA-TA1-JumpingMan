@@ -6,14 +6,15 @@ from Position import Position
 
 class JumpMan:
     def __init__(self, screen, dna: Gen, point):
-        self.position = Position(0, 0)
-        self.velocity = Position(20, 0)
+
         self.is_jumping = False
         self.ready = False
         self.dna = dna
         self.screen = screen
         self.goal = point
         self.alive = True
+        self.position = Position(self.dna.x, 0)
+        self.velocity = Position(20, 0)
 
         self.body = turtle.Turtle()
         self.body.speed(0)
@@ -28,6 +29,8 @@ class JumpMan:
 
     def generate_child(self, other: Gen):
         new_dna1, new_dna2 = self.dna.generate_child(other)
+        # new_dna1.mutate(self.screen)
+        # new_dna2.mutate(self.screen)
         return JumpMan(self.screen, new_dna1, point=self.goal), JumpMan(self.screen, new_dna2, point=self.goal)
 
     def movement(self):
